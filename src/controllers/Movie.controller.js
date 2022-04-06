@@ -47,3 +47,27 @@ export const insertMoviesAndSeries = async(req, res) => {
         })
     }
 }
+
+export const deleteMovie = async (req, res) => {
+    const { id } = req.params
+
+    try {
+        let deleteMovie = await Movie.destroy({
+            where: {
+                id 
+            }
+        })
+
+        if(deleteMovie) {
+            return res.json({
+                message: "Movie Deleted",
+                data: {}
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            result: "Something goes wrong",
+            data: {}
+        })
+    }
+}
