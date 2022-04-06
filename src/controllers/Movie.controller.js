@@ -10,6 +10,18 @@ export const getMoviesAndSeries = async (req, res) => {
     })
 }
 
+export const getMovieById = async (req, res) => {
+    const movie = await Movie.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+
+    res.json({
+        results: movie
+    })
+}
+
 export const insertMoviesAndSeries = async(req, res) => {
     const { title, image, rate } = req.body
 

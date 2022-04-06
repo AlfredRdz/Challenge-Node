@@ -11,7 +11,7 @@ export const getCharacters = async (req, res) => {
 }
 
 export const getCharacterById = async (req, res) => {
-    const character = Character.findOne({
+    const character = await Character.findOne({
         where: {
             id: req.params.id
         }
