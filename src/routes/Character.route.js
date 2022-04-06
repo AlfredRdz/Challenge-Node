@@ -1,9 +1,11 @@
 import { Router } from "express"
-import { getCharacters, insertCharacter } from "../controllers/Character.controller"
+import { getCharacters, getCharacterById, insertCharacter, deleteCharacter } from "../controllers/Character.controller"
 
 const router = Router()
 
 router.get("/", getCharacters)
+router.get("/:id", getCharacterById)
 router.post("/", insertCharacter)
+router.delete("/:id", deleteCharacter)
 
 export default router

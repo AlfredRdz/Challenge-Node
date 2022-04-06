@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { getMoviesAndSeries, insertMoviesAndSeries } from "../controllers/Movie_Serie.controller"
+import { getMoviesAndSeries, insertMoviesAndSeries } from "../controllers/Movie.controller"
 
 const router = Router()
 
