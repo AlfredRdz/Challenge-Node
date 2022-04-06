@@ -1,7 +1,9 @@
 import Movie from "../models/Movie"
 
 export const getMoviesAndSeries = async (req, res) => {
-    const movie = await Movie.findAll()
+    const movie = await Movie.findAll({
+        attributes: ['title', 'image', 'createdAt']
+    })
 
     res.json({
         message: movie
