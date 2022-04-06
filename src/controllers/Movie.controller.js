@@ -1,12 +1,10 @@
-import Movie_Serie from "../models/Movie_Serie"
+import Movie from "../models/Movie"
 
 export const getMoviesAndSeries = async (req, res) => {
-    const moviesAndSeries = await Movie_Serie.findAll({
-        attributes: ["title", "image"]
-    })
+    const movie = await Movie.findAll()
 
     res.json({
-        results: moviesAndSeries
+        message: movie
     })
 }
 
@@ -14,7 +12,7 @@ export const insertMoviesAndSeries = async(req, res) => {
     const { title, image, rate } = req.body
 
     try {
-        let newMoviesAndSeries = await Movie_Serie.create({
+        let newMovie = await Movie.create({
             title,
             image,
             rate
@@ -22,10 +20,10 @@ export const insertMoviesAndSeries = async(req, res) => {
             fields: ['title', 'image', 'rate']
         })
 
-        if (newMoviesAndSeries) {
+        if (newMovie) {
             return res.json({
                 message: "Movies and Series created",
-                data: newMoviesAndSeries
+                data: newMovie
             })
         }
     } catch (error) {

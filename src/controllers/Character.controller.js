@@ -1,10 +1,24 @@
 import Character from "../models/Character"
 
 export const getCharacters = async (req, res) => {
-    const character = Character.findAll()
+    const character = await Character.findAll({
+        attributes: ['name', 'image']
+    })
 
     res.json({
-        message: character
+        results: character
+    })
+}
+
+export const getCharacterById = async (req, res) => {
+    const character = Character.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+
+    res.json({
+        result: character
     })
 }
 
@@ -36,3 +50,27 @@ export const insertCharacter = async(req, res) => {
     }
 }
 
+export const deleteCharacter = async (req, res) => {
+    const { id } = req.params
+
+    try {
+        let deleteCharacter = await Character.destroy({
+            where: {
+                id
+            }
+        })
+
+        if (deleteCharacter) {
+            return res.json({
+                message: "Character deleted",
+                data: {}
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "Something goes wrong",
+            data: {}
+        })
+    }
+
+}

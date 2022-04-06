@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize/types"
 import { sequelize } from "../config/database"
 
-const Genre = sequelize.define("genres", {
+const Genre = sequelize.define('genres', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

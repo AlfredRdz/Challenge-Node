@@ -10,6 +10,9 @@ export const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
     dialect: 'mysql'
 })
 
+//sequelize.sync({force: true})
+
+
 sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.')
 

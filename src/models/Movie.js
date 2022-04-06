@@ -1,10 +1,13 @@
 import { Sequelize, DataTypes } from 'sequelize'
 import { sequelize } from '../config/database'
 
-const Movie_Serie = sequelize.define('movie_series', {
+import Character from './Character'
+
+const Movie = sequelize.define('movies', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
+        allowNull: false,
         primaryKey: true
     },
     title: {
@@ -20,9 +23,9 @@ const Movie_Serie = sequelize.define('movie_series', {
     createdAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
-    },
+    }
 }, {
     timestamps: false
 })
 
-export default Movie_Serie
+export default Movie
