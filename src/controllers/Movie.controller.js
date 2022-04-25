@@ -48,6 +48,33 @@ export const insertMoviesAndSeries = async(req, res) => {
     }
 }
 
+export const updateMovie = async (req, res) => {
+    const { id } = req.params
+    const { title, image, rate, createdAt } = req.body
+
+    const movies = await Movie.findAll({
+        attributes: ['id', 'title', 'image', 'rate', 'createdAt'],
+        where: {
+            id
+        }
+    })
+
+    if (movies.length > 0) {
+        movies.forEach(async movie => {
+            await movie.update({
+                title,
+                image,
+                rate,
+                createdAt
+            })
+        });
+    }
+    return res.json({
+        message: "Movie Updated Successfully",
+        data: movies
+    })
+}
+
 export const deleteMovie = async (req, res) => {
     const { id } = req.params
 

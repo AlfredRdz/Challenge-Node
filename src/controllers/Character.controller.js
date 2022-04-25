@@ -50,6 +50,34 @@ export const insertCharacter = async(req, res) => {
     }
 }
 
+/*export const updateCharacter = async (req, res) => {
+    const { id } = req.params
+    const { name, image, age, weight, history } = req.body
+
+    const characters = await Character.findAll({
+        attributes: ['id', 'name', 'image', 'age', 'weight', 'history'],
+        where: {
+            id
+        }
+    })
+
+    if (characters.length > 0) {
+        characters.forEach(character => {
+            await character.update({
+                name,
+                image,
+                age,
+                weight,
+                history
+            })
+        });
+    }
+    return res.json({
+        message: "Character Updated Successfully",
+        data: characters
+    })
+}*/
+
 export const deleteCharacter = async (req, res) => {
     const { id } = req.params
 
