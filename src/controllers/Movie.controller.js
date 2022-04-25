@@ -73,7 +73,7 @@ export const updateMovie = async (req, res) => {
         message: "Movie Updated Successfully",
         data: movies
     })
-}
+}   
 
 export const deleteMovie = async (req, res) => {
     const { id } = req.params
